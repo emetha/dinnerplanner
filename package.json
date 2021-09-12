@@ -1,0 +1,26 @@
+{
+  "name": "dinnerplanner-html-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client && react-scripts build",
+    "start": "cd client && react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emetha/dinnerplanner-html-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emetha/dinnerplanner-html-react/issues"
+  },
+  "homepage": "https://github.com/emetha/dinnerplanner-html-react#readme",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.9.0",
+    "firebase-admin": "^9.11.1",
+    "react-scripts": "^4.0.3"
+  }
+}

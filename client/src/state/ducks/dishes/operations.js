@@ -19,19 +19,12 @@ const selectedDishDetails = actions.selectedDishDetails;
 
 const fetchDish = (id) => (dispatch) => {
 
+  let url = `${endpoint}/api/recipes/${id}`;
+
   dispatch(fetchDishRequest());
 
-  const options = {
-    method: "GET",
-    url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${dishId}/information`,
-    headers: {
-      "x-rapidapi-host": `${process.env.ENDPOINT}`,
-      "x-rapidapi-key": `${process.env.API_KEY}`,
-    },
-  };
-
   axios
-    .request(options)
+    .get(url)
     .then((response) => {
       return dispatch(fetchDishSuccess(response.data));
     })
@@ -39,26 +32,12 @@ const fetchDish = (id) => (dispatch) => {
 };
 
 const fetchDishes = (type, query) => (dispatch) => {
+  let url = `${endpoint}/api/recipes?query=${query}&type=${option}`;
 
   dispatch(fetchDishesRequest());
 
-   const options = {
-     method: "GET",
-     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
-     params: {
-       query: query,
-       number: "25",
-       offset: "0",
-       type: type,
-     },
-     headers: {
-       "x-rapidapi-host": `${process.env.ENDPOINT}`,
-       "x-rapidapi-key": `${process.env.API_KEY}`,
-     },
-   };
-
   axios
-    .request(options)
+    .get(url)
     .then((response) => {
       return dispatch(fetchDishesSuccess(response.data.results));
     })
