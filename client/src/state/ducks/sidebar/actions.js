@@ -10,7 +10,9 @@ export const toggleDrawer = (open) => ({
   payload: open,
 });
 
-export default {
+const sidebarActions = {
   updateServings,
   toggleDrawer,
 };
+
+export default sidebarActions;

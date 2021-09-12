@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography } from "@material-ui/core";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 
 const useStyles = makeStyles((theme) => ({
   color: {
@@ -20,7 +20,7 @@ const DetailsDishInstructions = ({ instructions }) => {
         align="justify"
         className={classes.darkColor}
       >
-        {ReactHtmlParser(instructions)}
+        {parse(`${instructions}`)}
       </Typography>
     </Box>
   );

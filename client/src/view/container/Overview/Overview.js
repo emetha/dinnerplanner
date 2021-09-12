@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import { NavLink } from "react-router-dom";
 import Page from "../../component/Layout/Page";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -87,7 +87,7 @@ const Overview = () => {
           <AccordionDetails>
             <Box>
               <Typography variant="body2" className={classes.link}>
-                {ReactHtmlParser(dish.summary)}
+                {parse(`${dish.summary}`)}
               </Typography>
             </Box>
           </AccordionDetails>

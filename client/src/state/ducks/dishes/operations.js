@@ -6,6 +6,7 @@ Complex operations involve returning a thunk that dispatches multiple actions in
 
 import actions from "./actions";
 import axios from "axios";
+import endpoints from "../../../configuration/endpoints";
 
 const fetchDishesRequest = actions.fetchDishesRequest;
 const fetchDishesFailure = actions.fetchDishesFailure;
@@ -18,51 +19,31 @@ const fetchDishSuccess = actions.fetchDishSuccess;
 const selectedDishDetails = actions.selectedDishDetails;
 
 const fetchDish = (id) => (dispatch) => {
+  let url = `${endpoints.api}/recipes/${id}`;
 
   dispatch(fetchDishRequest());
 
-  const options = {
-    method: "GET",
-    url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${dishId}/information`,
-    headers: {
-      "x-rapidapi-host": `${process.env.ENDPOINT}`,
-      "x-rapidapi-key": `${process.env.API_KEY}`,
-    },
-  };
-
   axios
-    .request(options)
+    .get(url)
     .then((response) => {
       return dispatch(fetchDishSuccess(response.data));
     })
     .catch((e) => dispatch(fetchDishFailure(e.message)));
 };
 
-const fetchDishes = (type, query) => (dispatch) => {
+const fetchDishes = (option, query) => (dispatch) => {
+  let url = `${endpoints.api}/recipes?query=${query}&type=${option}`;
 
   dispatch(fetchDishesRequest());
 
-   const options = {
-     method: "GET",
-     url: "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search",
-     params: {
-       query: query,
-       number: "25",
-       offset: "0",
-       type: type,
-     },
-     headers: {
-       "x-rapidapi-host": `${process.env.ENDPOINT}`,
-       "x-rapidapi-key": `${process.env.API_KEY}`,
-     },
-   };
-
   axios
-    .request(options)
+    .get(url)
     .then((response) => {
       return dispatch(fetchDishesSuccess(response.data.results));
     })
     .catch((e) => dispatch(fetchDishesFailure(e.message)));
 };
 
-export default { fetchDish, fetchDishes, selectedDishDetails };
+const dishesOperations = { fetchDish, fetchDishes, selectedDishDetails };
+
+export default dishesOperations;

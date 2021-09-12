@@ -110,6 +110,7 @@ client/build
 
 # Configurations
 dinner-planner.json
+functions/.runtimeconfig.json
 
 # Firebase Hosting
 ./firebase/hosting.*.cache

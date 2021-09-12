@@ -8,7 +8,7 @@ const DetailsDishTags = ({ chips }) => {
           <Chip label={chip.title} color="secondary" />
         </Grid>
       );
-    }
+    } else return null;
   });
   return (
     <Box m={3} display="flex">

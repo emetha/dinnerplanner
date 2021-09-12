@@ -16,7 +16,7 @@ import {
   Button,
   Tooltip,
 } from "@material-ui/core";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import Page from "../../component/Layout/Page";
 import DetailsDishTitle from "../../component/Details/DetailsDishTitle";
@@ -119,7 +119,7 @@ const Printout = () => {
                         variant="body1"
                         align="justify"
                       >
-                        {ReactHtmlParser(dish.instructions)}
+                        {parse(`${dish.instructions}`)}
                       </Typography>
                     </Box>
                   </Grid>

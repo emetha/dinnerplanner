@@ -16,8 +16,10 @@ const requestSnack =
     dispatch(newSnack({ message: message, severity: severity }));
   };
 
-export default {
+const snackbarOperations = {
   closeActiveSnack,
   requestSnack,
   showActiveSnack,
 };
+
+export default snackbarOperations;

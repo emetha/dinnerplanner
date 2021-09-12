@@ -12,7 +12,9 @@ const getSnackbarOpen = (state) => {
   return state.snackbarReducer.snack.open;
 };
 
-export default {
+const snackbarSelectors = {
   getSnackbarOpen,
   getSnackData,
 };
+
+export default snackbarSelectors;
