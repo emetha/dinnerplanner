@@ -18,7 +18,7 @@ import PrivateRoute from "./view/container/Auth/PrivateRoute";
 import RecipeSnackbar from "./view/container/Sidebar/RecipeSnackbar";
 
 const App = () => {
-  const [theme, setTheme] = useState(
+  const [theme] = useState(
     createTheme({
       palette: {
         primary: {

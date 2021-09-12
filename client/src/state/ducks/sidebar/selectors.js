@@ -35,7 +35,7 @@ const getDrawerToggle = (state) => {
   return state.sidebarReducer.drawer.toggle;
 };
 
-export default {
+const sidebarSelectors = {
   getNumberOfServings,
   getTotalMenuPrice,
   getFullMenu,
@@ -43,3 +43,5 @@ export default {
   getAuth,
   getDrawerToggle,
 };
+
+export default sidebarSelectors;

@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { dishesOperations, dishesSelectors } from "../../../state/ducks/dishes";
-import {
-  sidebarOperations,
-  sidebarSelectors,
-} from "../../../state/ducks/sidebar";
 import debounce from "lodash.debounce";
 import { DISH_TYPES } from "../../../constants/DishConstants";
 import {
@@ -31,6 +27,7 @@ const SelectDish = () => {
     localStorage.getItem(SEARCH_QUERY)
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSave = useCallback(
     debounce((nextValue) => apiCall(nextValue), 1000),
     [] // will be created only once initially

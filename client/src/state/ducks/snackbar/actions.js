@@ -13,8 +13,10 @@ export const closeActiveSnack = () => ({
   type: types.CLOSE_ACTIVE_SNACK,
 });
 
-export default {
+const snackbarActions = {
   newSnack,
   showActiveSnack,
   closeActiveSnack,
 };
+
+export default snackbarActions;

@@ -24,10 +24,13 @@ const getSelectedDishDetailsID = (state) => {
   return state.dishesReducer.dishes.dishDetailsID;
 };
 
-export default {
+const dishesSelectors = {
   getFetchedDishes,
   getFetchedDish,
   getErrorMessage,
   getStatus,
   getSelectedDishDetailsID,
 };
+
+
+export default dishesSelectors;

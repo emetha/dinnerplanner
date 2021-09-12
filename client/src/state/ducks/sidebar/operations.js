@@ -16,7 +16,9 @@ const toggleDrawer = (open) => (dispatch) => {
   dispatch(actions.toggleDrawer(open));
 };
 
-export default {
+const sidebarOperations = {
   updateServings,
   toggleDrawer,
 };
+
+export default sidebarOperations;

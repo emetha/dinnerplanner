@@ -1,12 +1,8 @@
-import { makeStyles, responsiveFontSizes } from "@material-ui/core/styles";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import GradeIcon from "@material-ui/icons/Grade";
 import TimerIcon from "@material-ui/icons/Timer";
-import { Typography, Box, Grid, Avatar } from "@material-ui/core";
+import { Typography, Box, Grid } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  title: { fontWeight: "bold" },
-}));
 
 const DetailsDishTitle = ({
   title,
@@ -14,7 +10,6 @@ const DetailsDishTitle = ({
   readyInMinutes,
   aggregateLikes,
 }) => {
-  const classes = useStyles();
 
   return (
     <Box

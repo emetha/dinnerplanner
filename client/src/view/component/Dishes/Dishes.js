@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Typography, Divider } from "@material-ui/core";
-import _ from "lodash";
 import Recipe from "../../container/Recipe/Recipe";
 import image from "../../../assets/undraw/undraw_empty_cart_co35.svg";
 

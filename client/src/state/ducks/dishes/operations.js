@@ -19,7 +19,6 @@ const fetchDishSuccess = actions.fetchDishSuccess;
 const selectedDishDetails = actions.selectedDishDetails;
 
 const fetchDish = (id) => (dispatch) => {
-
   let url = `${endpoints.api}/recipes/${id}`;
 
   dispatch(fetchDishRequest());
@@ -32,8 +31,8 @@ const fetchDish = (id) => (dispatch) => {
     .catch((e) => dispatch(fetchDishFailure(e.message)));
 };
 
-const fetchDishes = (type, query) => (dispatch) => {
-  let url = `${endpoints.api}/recipes?query=${query}&type=${type}`;
+const fetchDishes = (option, query) => (dispatch) => {
+  let url = `${endpoints.api}/recipes?query=${query}&type=${option}`;
 
   dispatch(fetchDishesRequest());
 
@@ -45,4 +44,6 @@ const fetchDishes = (type, query) => (dispatch) => {
     .catch((e) => dispatch(fetchDishesFailure(e.message)));
 };
 
-export default { fetchDish, fetchDishes, selectedDishDetails };
+const dishesOperations = { fetchDish, fetchDishes, selectedDishDetails };
+
+export default dishesOperations;

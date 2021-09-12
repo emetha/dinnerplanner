@@ -4,7 +4,6 @@ import { Button, Box, Tooltip } from "@material-ui/core/";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { dishesOperations, dishesSelectors } from "../../../state/ducks/dishes";
-import { snackbarSelectors } from "../../../state/ducks/snackbar";
 
 import Presentation from "../../component/Layout/Presentation";
 import AddRecipe from "../Recipe/AddRecipe";
@@ -12,7 +11,6 @@ import Page from "../../component/Layout/Page";
 import DetailsDish from "../../component/Details/DetailsDish";
 import StatusLoader from "../../component/Status/StatusLoader";
 import StatusDataFailure from "../../component/Status/StatusDataFailure";
-import RecipeSnackbar from "../Sidebar/RecipeSnackbar";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -32,11 +30,10 @@ const ViewDetails = () => {
   const dishID = dishesSelectors.getSelectedDishDetailsID(state);
   const fetchedDish = dishesSelectors.getFetchedDish(state);
   const status = dishesSelectors.getStatus(state);
-  const openSnackbar = snackbarSelectors.getSnackbarOpen(state);
 
   useEffect(() => {
     dispatch(dishesOperations.fetchDish(dishID));
-  }, [dispatch]);
+  }, [dispatch, dishID]);
 
   const PageHeader = ({ fetchedDish }) => {
     return (
