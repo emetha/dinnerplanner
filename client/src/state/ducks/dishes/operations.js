@@ -6,6 +6,7 @@ Complex operations involve returning a thunk that dispatches multiple actions in
 
 import actions from "./actions";
 import axios from "axios";
+import endpoints from "../../../configuration/endpoints";
 
 const fetchDishesRequest = actions.fetchDishesRequest;
 const fetchDishesFailure = actions.fetchDishesFailure;
@@ -19,7 +20,7 @@ const selectedDishDetails = actions.selectedDishDetails;
 
 const fetchDish = (id) => (dispatch) => {
 
-  let url = `${endpoint}/api/recipes/${id}`;
+  let url = `${endpoints.api}/recipes/${id}`;
 
   dispatch(fetchDishRequest());
 
@@ -32,7 +33,7 @@ const fetchDish = (id) => (dispatch) => {
 };
 
 const fetchDishes = (type, query) => (dispatch) => {
-  let url = `${endpoint}/api/recipes?query=${query}&type=${option}`;
+  let url = `${endpoints.api}/recipes?query=${query}&type=${type}`;
 
   dispatch(fetchDishesRequest());
 
