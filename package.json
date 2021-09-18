@@ -20,7 +20,6 @@
   "homepage": "https://github.com/emetha/dinnerplanner-html-react#readme",
   "dependencies": {
     "@google-cloud/functions-framework": "^1.9.0",
-    "axios": "^0.21.4",
     "firebase-admin": "^9.11.1",
     "react-scripts": "^4.0.3"
   }
