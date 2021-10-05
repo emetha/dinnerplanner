@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const cors = require("cors")({origin: true});
+const cors = require("cors")({ origin: true });
 const axios = require("axios");
 
 exports.getRecipes = (req, res) => {
@@ -23,14 +23,14 @@ exports.getRecipes = (req, res) => {
 
   cors(req, res, () => {
     axios
-        .request(options)
-        .then((response) => {
-          res.status(200).send(response.data);
-        })
-        .catch((e) => {
-          console.log("Spoonacular Rapid API error: ", e);
-          res.sendStatus(500); // ¯\_(ツ)_/¯
-        });
+      .request(options)
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((e) => {
+        console.error("Spoonacular Rapid API error: ", e);
+        res.sendStatus(500); // ¯\_(ツ)_/¯
+      });
   });
 };
 
@@ -48,13 +48,13 @@ exports.getRecipe = (req, res) => {
 
   cors(req, res, () => {
     axios
-        .request(options)
-        .then((response) => {
-          res.status(200).send(response.data);
-        })
-        .catch((e) => {
-          console.log("Spoonacular Rapid API error: ", e);
-          res.sendStatus(500); // ¯\_(ツ)_/¯
-        });
+      .request(options)
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((e) => {
+        console.error("Spoonacular Rapid API error: ", e);
+        res.sendStatus(500); // ¯\_(ツ)_/¯
+      });
   });
 };

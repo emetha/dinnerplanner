@@ -13,6 +13,7 @@ const newSnack = actions.newSnack;
 const requestSnack =
   ({ severity, message }) =>
   (dispatch) => {
+    console.log("New Snack Dispatched!");
     dispatch(newSnack({ message: message, severity: severity }));
   };
 

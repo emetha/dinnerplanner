@@ -1,0 +1,11 @@
+const UNAUTHED_REDIRECT = "UNAUTHED_REDIRECT";
+const AUTH_SUCCESS = "AUTH_SUCCESS";
+const AUTH_ERROR = "AUTH_ERROR";
+
+const apiTypes = {
+  UNAUTHED_REDIRECT,
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+};
+
+export default apiTypes;

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { dishesOperations } from "../../../state/ducks/dishes";
+import { apiOperations } from "../../../state/ducks/api";
 import {
   Card,
   CardHeader,
@@ -38,7 +38,7 @@ const Recipe = ({ dish }) => {
   const dispatch = useDispatch();
 
   const handleDishOnclick = (id) => {
-    dispatch(dishesOperations.selectedDishDetails(id));
+    dispatch(apiOperations.selectedDishDetails(id));
   };
 
   return (

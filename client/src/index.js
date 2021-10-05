@@ -16,16 +16,19 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore();
+firebase.firestore(); // <- needed if using firestore
 
 const rrfConfig = {
   userProfile: "users",
   useFirestoreForProfile: true,
+  enableRedirectHandling: false,
+  resetBeforeLogin: false,
 };
 
 const rrfProps = {
   firebase,
   config: rrfConfig,
+  firebaseConfig,
   dispatch: store.dispatch,
   createFirestoreInstance, //since we are using Firestore
 };

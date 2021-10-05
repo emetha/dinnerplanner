@@ -2,10 +2,11 @@ import React from "react";
 import { useFirebase } from "react-redux-firebase";
 import { Button } from "@material-ui/core";
 
-const LogIn = ({ label = "Login", variant = "text", color = "inherit" }) => {
+const LogOut = ({ label = "Logout", variant = "text", color = "inherit" }) => {
   const firebase = useFirebase();
-  const Login = () => {
-    firebase.login({ provider: "google", type: "redirect" });
+
+  const logoutUser = () => {
+    firebase.logout();
   };
   return (
     <Button
@@ -13,11 +14,11 @@ const LogIn = ({ label = "Login", variant = "text", color = "inherit" }) => {
       color={color}
       onClick={(event) => {
         event.preventDefault();
-        Login();
+        logoutUser();
       }}
     >
       {label}
     </Button>
   );
 };
-export default LogIn;
+export default LogOut;

@@ -10,7 +10,7 @@ const initialState = {
   dishDetailsID: "",
 };
 
-const dishes = (state = initialState, action) => {
+const spoonacular = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_DISH_SUCCEEDED: {
       return {
@@ -63,8 +63,8 @@ const dishes = (state = initialState, action) => {
   }
 };
 
-const dishesReducer = combineReducers({
-  dishes,
+const apiReducer = combineReducers({
+  spoonacular,
 });
 
-export default dishesReducer;
+export default apiReducer;

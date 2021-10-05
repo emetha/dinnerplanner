@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography, Box } from "@material-ui/core";
-import MenuHeader from "../../container/Auth/MenuHeader";
-import AuthHeader from "../../container/Auth/AuthHeader";
+import MenuHeader from "../../container/Authentication/MenuHeader";
+import AuthHeader from "../../container/Authentication/AuthHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {

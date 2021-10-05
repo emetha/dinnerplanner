@@ -44,6 +44,6 @@ const fetchDishes = (option, query) => (dispatch) => {
     .catch((e) => dispatch(fetchDishesFailure(e.message)));
 };
 
-const dishesOperations = { fetchDish, fetchDishes, selectedDishDetails };
+const apiOperations = { fetchDish, fetchDishes, selectedDishDetails };
 
-export default dishesOperations;
+export default apiOperations;

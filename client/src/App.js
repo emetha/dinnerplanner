@@ -5,17 +5,15 @@ import {
   ThemeProvider,
   responsiveFontSizes,
 } from "@material-ui/core/styles";
-
 import { Container, CssBaseline } from "@material-ui/core";
-
 import SelectDish from "./view/container/SelectDish/SelectDish";
 import ViewDetails from "./view/container/ViewDetails/ViewDetails";
 import StatusError404 from "./view/component/Status/StatusError404";
 import Welcome from "./view/container/Welcome/Welcome";
 import Printout from "./view/container/Printout/Printout";
 import Overview from "./view/container/Overview/Overview";
-import PrivateRoute from "./view/container/Auth/PrivateRoute";
 import RecipeSnackbar from "./view/container/Sidebar/RecipeSnackbar";
+import { UserIsAdmin, UserIsAuthenticated } from "./auth";
 
 const App = () => {
   const [theme] = useState(
@@ -37,21 +35,23 @@ const App = () => {
           {/* We rended diffrent component based on the path */}
           <Router>
             <Switch>
-              <Route exact path="/">
-                <Welcome />
-              </Route>
-              <PrivateRoute path="/search">
-                <SelectDish />
-              </PrivateRoute>
-              <PrivateRoute path="/details/:dishID">
-                <ViewDetails />
-              </PrivateRoute>
-              <PrivateRoute path="/printout">
-                <Printout />
-              </PrivateRoute>
-              <PrivateRoute path="/overview">
-                <Overview />
-              </PrivateRoute>
+              <Route exact path="/" component={Welcome} />
+              <Route
+                path="/search"
+                component={UserIsAuthenticated(UserIsAdmin(SelectDish))}
+              />
+              <Route
+                path="/details/:dishID"
+                component={UserIsAuthenticated(UserIsAdmin(ViewDetails))}
+              />
+              <Route
+                path="/printout"
+                component={UserIsAuthenticated(UserIsAdmin(Printout))}
+              />
+              <Route
+                path="/overview"
+                component={UserIsAuthenticated(UserIsAdmin(Overview))}
+              />
               <Route component={StatusError404} />
             </Switch>
           </Router>
@@ -61,5 +61,4 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
 export default App;

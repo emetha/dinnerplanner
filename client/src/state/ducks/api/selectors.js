@@ -5,26 +5,26 @@ These functions make sense when you have a more complex app state.
 */
 
 const getFetchedDishes = (state) => {
-  return state.dishesReducer.dishes.fetchedDishes;
+  return state.api.spoonacular.fetchedDishes;
 };
 
 const getFetchedDish = (state) => {
-  return state.dishesReducer.dishes.fetchedDish;
+  return state.api.spoonacular.fetchedDish;
 };
 
 const getErrorMessage = (state) => {
-  return state.dishesReducer.dishes.error;
+  return state.api.spoonacular.error;
 };
 
 const getStatus = (state) => {
-  return state.dishesReducer.dishes.status;
+  return state.api.spoonacular.status;
 };
 
 const getSelectedDishDetailsID = (state) => {
-  return state.dishesReducer.dishes.dishDetailsID;
+  return state.api.spoonacular.dishDetailsID;
 };
 
-const dishesSelectors = {
+const apiSelectors = {
   getFetchedDishes,
   getFetchedDish,
   getErrorMessage,
@@ -32,5 +32,4 @@ const dishesSelectors = {
   getSelectedDishDetailsID,
 };
 
-
-export default dishesSelectors;
+export default apiSelectors;

@@ -9,10 +9,19 @@ service cloud.firestore {
     function sameUser(user) {
     	return request.auth.uid == user;
     }
+    
+    function isAdmin(user) {
+      return user.data.role == "admin";
+    }
 
-    match /users/{user}/menu/{documents=**} {
-      allow read: if signedIn() && sameUser(user);
-      allow write: if signedIn() && sameUser(user);
-   	}
+    match /users/{user} {
+    	  allow read, write: if signedIn() && sameUser(user);
+    	match /menu/{documents=**} {
+        allow read, write: if signedIn() && sameUser(user) && isAdmin(user);
+    }
   }
+  match /approvedUsers/{user} {
+      allow write, read: if signedIn() && sameUser(user) && isAdmin(user);
+    }
+	}
 }

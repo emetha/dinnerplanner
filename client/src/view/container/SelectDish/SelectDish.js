@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { dishesOperations, dishesSelectors } from "../../../state/ducks/dishes";
+import { apiOperations, apiSelectors } from "../../../state/ducks/api";
 import debounce from "lodash.debounce";
 import { DISH_TYPES } from "../../../constants/DishConstants";
 import {
@@ -19,7 +19,7 @@ import Presentation from "../../component/Layout/Presentation";
 const SelectDish = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const status = dishesSelectors.getStatus(state);
+  const status = apiSelectors.getStatus(state);
   const [searchOption, setSearchOption] = useState(
     localStorage.getItem(SEARCH_OPTION)
   );
@@ -27,7 +27,6 @@ const SelectDish = () => {
     localStorage.getItem(SEARCH_QUERY)
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSave = useCallback(
     debounce((nextValue) => apiCall(nextValue), 1000),
     [] // will be created only once initially
@@ -35,13 +34,13 @@ const SelectDish = () => {
 
   const apiCall = (value) => {
     localStorage.setItem(SEARCH_QUERY, value);
-    dispatch(dishesOperations.fetchDishes(searchOption, searchQuery));
+    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
     setSearchQuery(value);
   };
 
   const onOptionChange = (event) => {
     localStorage.setItem(SEARCH_OPTION, event.target.value);
-    dispatch(dishesOperations.fetchDishes(searchOption, searchQuery));
+    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
     setSearchOption(event.target.value);
   };
 
@@ -51,7 +50,7 @@ const SelectDish = () => {
   };
 
   useEffect(() => {
-    dispatch(dishesOperations.fetchDishes(searchOption, searchQuery));
+    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
   }, [dispatch, searchQuery, searchOption]);
 
   return (
@@ -62,7 +61,7 @@ const SelectDish = () => {
         <Page
           pageTitle="SEARCH"
           contentChild={
-            <Dishes dishes={dishesSelectors.getFetchedDishes(state)} />
+            <Dishes dishes={apiSelectors.getFetchedDishes(state)} />
           }
           showMenuButton={true}
         >

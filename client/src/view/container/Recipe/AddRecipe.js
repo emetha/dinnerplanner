@@ -2,14 +2,12 @@ import { useFirestore } from "react-redux-firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Tooltip } from "@material-ui/core/";
 import { snackbarOperations } from "../../../state/ducks/snackbar";
-import { sidebarSelectors } from "../../../state/ducks/sidebar";
 import constants from "../../../constants/SnackbarConstants";
 
 const AddRecipe = ({ recipe, label, tooltipTitle }) => {
   const firestore = useFirestore();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  const uid = sidebarSelectors.getUID(state);
+  const uid = useSelector((state) => state.firebase.auth.uid);
 
   const handleOnClick = (recipe) => {
     if (recipe) {
@@ -30,7 +28,7 @@ const AddRecipe = ({ recipe, label, tooltipTitle }) => {
               })
             );
           } else {
-            docRef.set({...recipe, uid: uid});
+            docRef.set({ ...recipe, uid: uid });
             dispatch(
               snackbarOperations.requestSnack({
                 message: "Recipe has been added!",
