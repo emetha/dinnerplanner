@@ -34,12 +34,6 @@ const LogIn = ({ label = "Login", variant = "text", color = "inherit" }) => {
     setOpen(false);
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     setOpen(false); // This worked for me
-  //   };
-  // }, []);
-
   return (
     <Authentication
       title="LogIn"

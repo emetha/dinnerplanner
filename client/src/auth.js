@@ -8,7 +8,6 @@ import StatusLoader from "./view/component/Status/StatusLoader";
 import { createBrowserHistory } from "history";
 import { snackbarOperations } from "./state/ducks/snackbar";
 import constants from "./constants/SnackbarConstants";
-// import { useDispatch } from "react-redux";
 
 const locationHelper = locationHelperBuilder({});
 const browserHistory = createBrowserHistory();
