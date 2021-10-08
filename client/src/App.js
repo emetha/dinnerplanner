@@ -38,11 +38,13 @@ const App = () => {
               <Route exact path="/" component={Welcome} />
               <Route
                 path="/search"
-                component={UserIsAuthenticated(UserIsAdmin(SelectDish))}
+                // component={UserIsAuthenticated(UserIsAdmin(SelectDish))}
+                component={SelectDish}
               />
               <Route
                 path="/details/:dishID"
-                component={UserIsAuthenticated(UserIsAdmin(ViewDetails))}
+                // component={UserIsAuthenticated(UserIsAdmin(ViewDetails))}
+                component={ViewDetails}
               />
               <Route
                 path="/printout"

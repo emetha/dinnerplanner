@@ -17,7 +17,7 @@ export const UserIsAdmin = connectedReduxRedirect({
   AuthenticatingComponent: StatusLoader,
   allowRedirectBack: false,
   redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || "/unauthorized",
+    locationHelper.getRedirectQueryParam(ownProps) || "/",
   authenticatingSelector: ({ firebase: { auth, profile, isInitializing } }) =>
     !auth.isLoaded || !profile.isLoaded || isInitializing === true,
   authenticatedSelector: ({ firebase: { profile, auth } }) =>
@@ -38,7 +38,7 @@ export const UserIsAuthenticated = connectedRouterRedirect({
   AuthenticatingComponent: StatusLoader,
   allowRedirectBack: false,
   redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || "/signin",
+    locationHelper.getRedirectQueryParam(ownProps) || "/",
   authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
     !auth.isLoaded || isInitializing === true,
   authenticatedSelector: ({ firebase: { auth } }) =>
@@ -52,15 +52,6 @@ export const VisibleOnlyAdmin = (Component, FailureComponent) =>
     authenticatedSelector: ({ firebase: { profile } }) =>
       profile.role === "admin",
     wrapperDisplayName: "VisibleOnlyAdmin",
-    FailureComponent,
-  })(Component);
-
-export const VisibleForLoadedAuthentication = (Component, FailureComponent) =>
-  connectedAuthWrapper({
-    authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
-      !auth.isLoaded || isInitializing === true,
-    authenticatedSelector: ({ firebase: { auth } }) => auth.isLoaded,
-    wrapperDisplayName: "VisibleForLoadedAuthentication",
     FailureComponent,
   })(Component);
 

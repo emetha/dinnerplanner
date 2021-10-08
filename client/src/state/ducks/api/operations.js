@@ -7,6 +7,7 @@ Complex operations involve returning a thunk that dispatches multiple actions in
 import actions from "./actions";
 import axios from "axios";
 import endpoints from "../../../configuration/endpoints";
+import firebase from "firebase/compat/app";
 
 const fetchDishesRequest = actions.fetchDishesRequest;
 const fetchDishesFailure = actions.fetchDishesFailure;
@@ -19,29 +20,55 @@ const fetchDishSuccess = actions.fetchDishSuccess;
 const selectedDishDetails = actions.selectedDishDetails;
 
 const fetchDish = (id) => (dispatch) => {
-  let url = `${endpoints.api}/recipes/${id}`;
-
-  dispatch(fetchDishRequest());
-
-  axios
-    .get(url)
-    .then((response) => {
-      return dispatch(fetchDishSuccess(response.data));
-    })
-    .catch((e) => dispatch(fetchDishFailure(e.message)));
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let url = `${endpoints.api}/recipes/${id}`;
+      firebase
+        .auth()
+        .currentUser.getIdToken(true)
+        .then((token) => {
+          dispatch(fetchDishRequest());
+          axios
+            .get(url, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((response) => {
+              return dispatch(fetchDishSuccess(response.data));
+            })
+            .catch((e) => dispatch(fetchDishFailure(e.message)));
+        });
+    } else {
+      console.error(`User is signed out...`);
+    }
+  });
 };
 
 const fetchDishes = (option, query) => (dispatch) => {
-  let url = `${endpoints.api}/recipes?query=${query}&type=${option}`;
-
-  dispatch(fetchDishesRequest());
-
-  axios
-    .get(url)
-    .then((response) => {
-      return dispatch(fetchDishesSuccess(response.data.results));
-    })
-    .catch((e) => dispatch(fetchDishesFailure(e.message)));
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let url = `${endpoints.api}/recipes?query=${query}&type=${option}`;
+      firebase
+        .auth()
+        .currentUser.getIdToken(true)
+        .then((token) => {
+          dispatch(fetchDishesRequest());
+          axios
+            .get(url, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((response) => {
+              return dispatch(fetchDishesSuccess(response.data.results));
+            })
+            .catch((e) => dispatch(fetchDishesFailure(e.message)));
+        });
+    } else {
+      console.error(`User is signed out...`);
+    }
+  });
 };
 
 const apiOperations = { fetchDish, fetchDishes, selectedDishDetails };

@@ -4,54 +4,58 @@
 
 const admin = require("firebase-admin");
 
+function checkIfApproved(email) {
+  return admin.firestore().collection("admins").doc(email).get();
+}
+
 exports.makeAdminIfApproved = async (user) => {
   const email = user.email; // The email of the user.
+  const uid = uid; // The uid of the user.
+  const userCollection = "users";
+
   try {
     const approvedUserSnap = await checkIfApproved(email);
     if (approvedUserSnap.exists) {
       // User is approved
       return admin
         .firestore()
-        .collection("users")
-        .doc(user.uid)
+        .collection(userCollection)
+        .doc(uid)
         .get()
         .then((userSnap) => {
           if (userSnap.exists) {
             if (userSnap.data["role"] === "admin") {
-              console.log("User is already an admin");
+              functions.logger.log(`User ${uid} is already an admin`);
             } else {
-              console.log("User account exists, but is not an admin");
+              functions.logger.log(
+                `User account ${uid} exists and approved, but is not an admin`
+              );
               return admin
                 .firestore()
-                .collection("users")
-                .doc(user.uid)
+                .collection(userCollection)
+                .doc(uid)
                 .set({ email: email, role: "admin" });
             }
           } else {
-            console.log("Creating admin account for " + email);
+            functions.logger.log(`Creating admin account for ${uid}`);
             return admin
               .firestore()
-              .collection("users")
-              .doc(user.uid)
+              .collection(userCollection)
+              .doc(uid)
               .set({ email: email, role: "admin" });
           }
-        })
-        .catch((error) => {
-          console.error(error);
         });
     } else {
-      console.log("Creating user account for " + email);
+      functions.logger.log(`Creating user account for ${uid}`);
       return admin
         .firestore()
-        .collection("users")
-        .doc(user.uid)
+        .collection(userCollection)
+        .doc(uid)
         .set({ email: email, role: "user" });
     }
   } catch (error) {
-    console.error(error);
+    functions.logger.error(
+      `Error while creating an admin account for user ${uid}: ${error}`
+    );
   }
 };
-
-function checkIfApproved(email) {
-  return admin.firestore().collection("admins").doc(email).get();
-}

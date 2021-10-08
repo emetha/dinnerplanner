@@ -142,12 +142,13 @@ const Welcome = () => {
     />
   );
 
-  const PageVisibleForAuthenticatedAdmin = VisibleForAuthenticatedUser(
-    VisibleOnlyAdmin(WelcomePageCreateDinner, WelcomePageNotAdmin),
-    WelcomePageSignIn
-  );
+  // const PageVisibleForAuthenticatedAdmin = VisibleForAuthenticatedUser(
+  //   VisibleOnlyAdmin(WelcomePageCreateDinner, WelcomePageNotAdmin),
+  //   WelcomePageSignIn
+  // );
 
-  return <PageVisibleForAuthenticatedAdmin />;
+  // return <PageVisibleForAuthenticatedAdmin />;
+  return <WelcomePageCreateDinner></WelcomePageCreateDinner>;
 };
 
 export default Welcome;
