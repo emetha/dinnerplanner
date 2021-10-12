@@ -15,11 +15,20 @@ import Searchbar from "../../component/Search/Searchbar";
 import SearchForm from "../../component/Search/SearchForm";
 import Page from "../../component/Layout/Page";
 import Presentation from "../../component/Layout/Presentation";
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography, Box, Grid } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  header: {},
+}));
 
 const SelectDish = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
+
   const state = useSelector((state) => state);
   const status = apiSelectors.getStatus(state);
+
   const [searchOption, setSearchOption] = useState(
     localStorage.getItem(SEARCH_OPTION)
   );
@@ -34,13 +43,13 @@ const SelectDish = () => {
 
   const apiCall = (value) => {
     localStorage.setItem(SEARCH_QUERY, value);
-    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
+    // dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
     setSearchQuery(value);
   };
 
   const onOptionChange = (event) => {
     localStorage.setItem(SEARCH_OPTION, event.target.value);
-    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
+    // dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
     setSearchOption(event.target.value);
   };
 
@@ -50,11 +59,11 @@ const SelectDish = () => {
   };
 
   useEffect(() => {
-    dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
+    // dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
   }, [dispatch, searchQuery, searchOption]);
 
   const headerContent = () => (
-    <div>
+    <Box sx={{ display: "flex", flexDirection: "row", p: 1, m: 1 }}>
       <Searchbar onChange={onQueryChange} query={searchQuery} />
       <SearchForm
         inputLabelTitle="Dish Type"
@@ -62,7 +71,7 @@ const SelectDish = () => {
         options={DISH_TYPES}
         onChange={onOptionChange}
       />
-    </div>
+    </Box>
   );
 
   return (
@@ -72,10 +81,10 @@ const SelectDish = () => {
       loadedPresentation={
         <Page
           pageTitle="SEARCH"
-          headerChild={<headerContent />}
+          headerChild={headerContent}
           showMenuButton={true}
         >
-          <Dishes dishes={apiSelectors.getFetchedDishes(state)} />
+          {/* <Dishes dishes={apiSelectors.getFetchedDishes(state)} /> */}
         </Page>
       }
       errorPresentation={<StatusDataFailure />}
