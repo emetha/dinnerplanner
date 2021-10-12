@@ -1,15 +1,13 @@
 import { useFirestore } from "react-redux-firebase";
 import { snackbarOperations } from "../../../state/ducks/snackbar";
 import constants from "../../../constants/SnackbarConstants";
-import { sidebarSelectors } from "../../../state/ducks/sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, IconButton, Tooltip } from "@material-ui/core";
 
 const RemoveRecipe = ({ id, icon, label, tooltipTitle }) => {
   const dispatch = useDispatch();
   const firestore = useFirestore();
-  const state = useSelector((state) => state);
-  const uid = sidebarSelectors.getUID(state);
+  const uid = useSelector((state) => state.firebase.auth.uid);
 
   const handleOnclick = (id) => {
     firestore

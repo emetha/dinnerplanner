@@ -2,9 +2,6 @@ import { combineReducers } from "redux";
 import types from "./types";
 import storage from "../../../constants/StorageConstants";
 
-import { firebaseReducer } from "react-redux-firebase";
-import { firestoreReducer } from "redux-firestore";
-
 const inputReducer = (
   state = {
     servings: localStorage.getItem(storage.SERVINGS) || 0,
@@ -46,8 +43,6 @@ const drawerReducer = (
 const sidebarReducer = combineReducers({
   input: inputReducer,
   drawer: drawerReducer,
-  firebase: firebaseReducer,
-  firestore: firestoreReducer,
 });
 
 export default sidebarReducer;

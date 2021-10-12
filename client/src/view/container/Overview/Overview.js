@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Overview = () => {
   const state = useSelector((state) => state);
-  const uid = sidebarSelectors.getUID(state);
+  const uid = useSelector((state) => state.firebase.auth.uid);
   const totalPrice = sidebarSelectors.getTotalMenuPrice(state);
   const menu = sidebarSelectors.getFullMenu(state);
 
@@ -145,10 +145,11 @@ const Overview = () => {
   return (
     <Page
       pageTitle="OVERVIEW"
-      contentChild={<PageContent menu={menu} />}
       headerChild={<PageHeader />}
       showMenuButton={false}
-    />
+    >
+      <PageContent menu={menu} />
+    </Page>
   );
 };
 

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button, Box, Tooltip } from "@material-ui/core/";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { dishesOperations, dishesSelectors } from "../../../state/ducks/dishes";
+import { apiOperations, apiSelectors } from "../../../state/ducks/api";
 
 import Presentation from "../../component/Layout/Presentation";
 import AddRecipe from "../Recipe/AddRecipe";
@@ -27,12 +27,12 @@ const ViewDetails = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const dishID = dishesSelectors.getSelectedDishDetailsID(state);
-  const fetchedDish = dishesSelectors.getFetchedDish(state);
-  const status = dishesSelectors.getStatus(state);
+  const dishID = apiSelectors.getSelectedDishDetailsID(state);
+  const fetchedDish = apiSelectors.getFetchedDish(state);
+  const status = apiSelectors.getStatus(state);
 
   useEffect(() => {
-    dispatch(dishesOperations.fetchDish(dishID));
+    dispatch(apiOperations.fetchDish(dishID));
   }, [dispatch, dishID]);
 
   const PageHeader = ({ fetchedDish }) => {
@@ -74,9 +74,10 @@ const ViewDetails = () => {
         <Page
           pageTitle="DISH DETAILS"
           headerChild={<PageHeader fetchedDish={fetchedDish} />}
-          contentChild={<PageContent fetchedDish={fetchedDish} />}
           showMenuButton={true}
-        />
+        >
+          <PageContent fetchedDish={fetchedDish} />
+        </Page>
       }
       errorPresentation={<StatusDataFailure />}
     />

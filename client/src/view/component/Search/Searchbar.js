@@ -6,17 +6,14 @@ import SearchIcon from "@material-ui/icons/Search";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.35),
-    },
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
     },
+    display: "flex",
+    alignItems: "center",
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -31,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   inputInput: {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.35),
+    },
+    borderRadius: theme.shape.borderRadius,
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,

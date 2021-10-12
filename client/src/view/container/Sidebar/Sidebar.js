@@ -10,8 +10,8 @@ import { useFirestoreConnect } from "react-redux-firebase";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const uid = useSelector((state) => state.firebase.auth.uid);
 
-  const uid = sidebarSelectors.getUID(state);
   const menu = sidebarSelectors.getFullMenu(state);
   const servings = sidebarSelectors.getNumberOfServings(state);
   const totalPrice = sidebarSelectors.getTotalMenuPrice(state);

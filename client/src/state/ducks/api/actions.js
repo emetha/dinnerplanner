@@ -33,7 +33,7 @@ export const selectedDishDetails = (id) => ({
   payload: id,
 });
 
-const dishesActions =  {
+const apiActions = {
   fetchDishRequest,
   fetchDishesRequest,
   fetchDishFailure,
@@ -43,5 +43,4 @@ const dishesActions =  {
   selectedDishDetails,
 };
 
-
-export default dishesActions;
+export default apiActions;

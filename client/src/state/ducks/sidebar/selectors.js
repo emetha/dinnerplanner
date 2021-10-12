@@ -5,16 +5,12 @@ These functions make sense when you have a more complex app state.
 */
 
 const getFullMenu = (state) => {
-  const menu = state.sidebarReducer.firestore.data.menu || [];
+  const menu = state.firestore.data.menu || [];
   return Object.values(menu).filter((dish) => dish !== null);
 };
 
 const getNumberOfServings = (state) => {
-  return state.sidebarReducer.input.servings;
-};
-
-const getAuth = (state) => {
-  return state.sidebarReducer.firebase.auth;
+  return state.sidebar.input.servings;
 };
 
 const getTotalMenuPrice = (state) => {
@@ -27,20 +23,14 @@ const getTotalMenuPrice = (state) => {
   );
 };
 
-const getUID = (state) => {
-  return getAuth(state).uid;
-};
-
 const getDrawerToggle = (state) => {
-  return state.sidebarReducer.drawer.toggle;
+  return state.sidebar.drawer.toggle;
 };
 
 const sidebarSelectors = {
   getNumberOfServings,
   getTotalMenuPrice,
   getFullMenu,
-  getUID,
-  getAuth,
   getDrawerToggle,
 };
 

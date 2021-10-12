@@ -5,11 +5,11 @@ It exports as named export the selectors and the operations.
 Optionally it exports the actions and types if they are needed in other ducks.
 */
 
-import dishesReducer from "./reducers";
+import authReducer from "./reducers";
 
-export { default as dishesSelectors } from "./selectors";
-export { default as dishesOperations } from "./operations";
-export { default as dishesTypes } from "./types";
-export { default as dishesActions } from "./actions";
+export { default as authSelectors } from "./selectors";
+export { default as authOperations } from "./operations";
+export { default as authTypes } from "./types";
+export { default as authActions } from "./actions";
 
-export default dishesReducer;
+export default authReducer;

@@ -4,17 +4,12 @@ Together with the operations, the selectors are part of the public interface of 
 These functions make sense when you have a more complex app state.
 */
 
-const getSnackData = (state) => {
-  return state.snackbar.snack.data;
+const getAuthRoleStatus = (state) => {
+  return state.auth.role.status;
 };
 
-const getSnackbarOpen = (state) => {
-  return state.snackbar.snack.open;
+const apiSelectors = {
+  getAuthRoleStatus,
 };
 
-const snackbarSelectors = {
-  getSnackbarOpen,
-  getSnackData,
-};
-
-export default snackbarSelectors;
+export default apiSelectors;

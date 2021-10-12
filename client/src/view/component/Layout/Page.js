@@ -10,13 +10,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Page = ({
-  headerChild,
-  contentChild,
-  pageTitle,
-  children,
-  showMenuButton,
-}) => {
+const Page = (props) => {
+  const { headerChild, pageTitle, children, showMenuButton } = props;
   const classes = useStyles();
   return (
     <Grid container direction="row">
@@ -29,11 +24,11 @@ const Page = ({
           <Grid container spacing={2} direction="row">
             <Grid item xs={2}>
               <Header title={pageTitle} showMenuButton={showMenuButton}>
-                {headerChild ? headerChild : children}
+                {headerChild}
               </Header>
             </Grid>
             <Grid item xs={12}>
-              {contentChild}
+              {children}
             </Grid>
           </Grid>
         </main>

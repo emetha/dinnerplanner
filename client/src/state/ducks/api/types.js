@@ -6,7 +6,7 @@ const FETCH_DISH_REQUESTED = "FETCH_DISH_REQUESTED";
 const FETCH_DISHES_REQUESTED = "FETCH_DISHES_REQUESTED";
 const SELECTED_DISH_DETAILS = "SELECTED_DISH_DETAILS";
 
-const dishesTypes = {
+const apiTypes = {
   FETCH_DISHES_REQUESTED,
   FETCH_DISH_REQUESTED,
   FETCH_DISHES_FAILED,
@@ -16,4 +16,4 @@ const dishesTypes = {
   SELECTED_DISH_DETAILS,
 };
 
-export default dishesTypes;
+export default apiTypes;
