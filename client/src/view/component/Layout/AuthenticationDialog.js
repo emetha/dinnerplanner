@@ -9,7 +9,7 @@ import {
   TextField,
 } from "@material-ui/core";
 
-const Authentication = ({
+const AuthenticationDialog = ({
   title,
   label,
   variant = "text",
@@ -64,4 +64,4 @@ const Authentication = ({
     </div>
   );
 };
-export default Authentication;
+export default AuthenticationDialog;

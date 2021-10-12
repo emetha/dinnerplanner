@@ -3,6 +3,7 @@
  */
 
 const admin = require("firebase-admin");
+const functions = require("firebase-functions");
 
 function checkIfApproved(email) {
   return admin.firestore().collection("admins").doc(email).get();
@@ -10,7 +11,7 @@ function checkIfApproved(email) {
 
 exports.makeAdminIfApproved = async (user) => {
   const email = user.email; // The email of the user.
-  const uid = uid; // The uid of the user.
+  const uid = user.uid; // The uid of the user.
   const userCollection = "users";
 
   try {

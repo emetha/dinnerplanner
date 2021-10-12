@@ -74,9 +74,10 @@ const ViewDetails = () => {
         <Page
           pageTitle="DISH DETAILS"
           headerChild={<PageHeader fetchedDish={fetchedDish} />}
-          contentChild={<PageContent fetchedDish={fetchedDish} />}
           showMenuButton={true}
-        />
+        >
+          <PageContent fetchedDish={fetchedDish} />
+        </Page>
       }
       errorPresentation={<StatusDataFailure />}
     />

@@ -3,7 +3,8 @@ import LogIn from "./LogIn";
 import LogOut from "./LogOut";
 
 const AuthVisibleForAdmin = VisibleForAuthenticatedUser(
-  VisibleOnlyAdmin(LogOut, LogIn),
+  // VisibleOnlyAdmin(LogOut, LogIn),
+  LogOut,
   LogIn
 );
 

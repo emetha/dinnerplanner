@@ -137,9 +137,10 @@ const Printout = () => {
     <Page
       pageTitle="PRINTOUT"
       headerChild={<PageHeader />}
-      contentChild={<PageContent menu={menu} />}
       showMenuButton={false}
-    />
+    >
+      <PageContent menu={menu} />
+    </Page>
   );
 };
 

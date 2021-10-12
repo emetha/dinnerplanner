@@ -53,6 +53,18 @@ const SelectDish = () => {
     dispatch(apiOperations.fetchDishes(searchOption, searchQuery));
   }, [dispatch, searchQuery, searchOption]);
 
+  const headerContent = () => (
+    <div>
+      <Searchbar onChange={onQueryChange} query={searchQuery} />
+      <SearchForm
+        inputLabelTitle="Dish Type"
+        option={searchOption}
+        options={DISH_TYPES}
+        onChange={onOptionChange}
+      />
+    </div>
+  );
+
   return (
     <Presentation
       status={status}
@@ -60,18 +72,10 @@ const SelectDish = () => {
       loadedPresentation={
         <Page
           pageTitle="SEARCH"
-          contentChild={
-            <Dishes dishes={apiSelectors.getFetchedDishes(state)} />
-          }
+          headerChild={<headerContent />}
           showMenuButton={true}
         >
-          <Searchbar onChange={onQueryChange} query={searchQuery} />
-          <SearchForm
-            inputLabelTitle="Dish Type"
-            option={searchOption}
-            options={DISH_TYPES}
-            onChange={onOptionChange}
-          />
+          <Dishes dishes={apiSelectors.getFetchedDishes(state)} />
         </Page>
       }
       errorPresentation={<StatusDataFailure />}

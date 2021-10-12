@@ -145,10 +145,11 @@ const Overview = () => {
   return (
     <Page
       pageTitle="OVERVIEW"
-      contentChild={<PageContent menu={menu} />}
       headerChild={<PageHeader />}
       showMenuButton={false}
-    />
+    >
+      <PageContent menu={menu} />
+    </Page>
   );
 };
 

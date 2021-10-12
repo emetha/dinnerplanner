@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFirebase } from "react-redux-firebase";
-import Authentication from "../../component/Layout/Authentication";
+import AuthenticationDialog from "../../component/Layout/AuthenticationDialog";
 
 const SignIn = ({ label, variant = "text", color = "inherit" }) => {
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ const SignIn = ({ label, variant = "text", color = "inherit" }) => {
   };
 
   return (
-    <Authentication
+    <AuthenticationDialog
       title="Sign In"
       label={label}
       color={color}
