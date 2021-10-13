@@ -4,24 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && npm install && react-scripts build",
+    "build": "cd client && react-scripts build",
     "start": "cd client && react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emetha/dinnerplanner-html-react.git"
+    "url": "git+https://github.com/emetha/dinnerplanner.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emetha/dinnerplanner-html-react/issues"
+    "url": "https://github.com/emetha/dinnerplanner/issues"
   },
-  "homepage": "https://github.com/emetha/dinnerplanner-html-react#readme",
+  "homepage": "https://github.com/emetha/dinnerplanner#readme",
   "dependencies": {
     "@google-cloud/functions-framework": "^1.9.0",
     "firebase-admin": "^9.11.1",
     "firebase-functions": "^3.15.7",
+    "react": "^17.0.2",
     "react-scripts": "^4.0.3"
   }
 }
