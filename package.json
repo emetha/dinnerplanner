@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cd client && react-scripts build",
     "start": "cd client && react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ci": "cd client && npm ci"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "firebase-functions": "^3.15.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
     "react-scripts": "^4.0.3"
   }
 }
